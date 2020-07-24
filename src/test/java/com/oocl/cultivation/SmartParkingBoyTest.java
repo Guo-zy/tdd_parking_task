@@ -63,8 +63,6 @@ class SmartParkingBoyTest {
     }
 
     // Story 1 AC4
-
-
     @Test
     void should_return_null_when_fetchCar_given_used_ticket() {
         //given
@@ -78,5 +76,20 @@ class SmartParkingBoyTest {
 
         //then
         assertEquals(null , car);
+    }
+
+    //Story 1 AC5
+    @Test
+    void should_return_null_when_goParking_given_park_10_car_in_park_room_and_car() {
+        //given
+        SmartParkingBoy smartParkingBoy  = new SmartParkingBoy();
+        Car car = new Car("666666");
+        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+
+        //when
+        Ticket ticket = smartParkingBoy.goParking(car);
+
+        //then
+        assertEquals(null , ticket);
     }
 }
