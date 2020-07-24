@@ -19,4 +19,21 @@ class SmartParkingBoyTest {
         //then
         assertEquals("666666", ticket.getTicketId());
     }
+
+    //Story AC1
+
+    @Test
+    void should_return_car_when_fetchCar_given_ticket() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        Ticket ticket = smartParkingBoy.goParking(car);
+
+        //when
+        car = smartParkingBoy.fetchCar(ticket);
+
+        //then
+        assertEquals("666666", car.getCarLicense());
+    }
+
 }

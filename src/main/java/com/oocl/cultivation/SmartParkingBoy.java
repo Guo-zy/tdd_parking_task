@@ -9,6 +9,7 @@ public class SmartParkingBoy  extends ParkingBoy{
 
     @Override
     public Car fetchCar(Ticket ticket) {
-        return null;
+
+        return new Car(ticket.getTicketId());
     }
 }
