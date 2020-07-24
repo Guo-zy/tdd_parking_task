@@ -4,7 +4,10 @@ public class SmartParkingBoy  extends ParkingBoy{
 
     @Override
     public Ticket goParking(Car car) {
-        if(this.getParkCarPlaces().get(1).getCarCountInParkRoom() >= 10) return null;
+        if(this.getParkCarPlaces().get(1).getCarCountInParkRoom() >= 10) {
+            setWrongMes("Not enough position");
+            return null;
+        }
         if(this.getParkCarPlaces().get(0).getCarCountInParkRoom() >= 10){
             this.currentParkCarPlace ++;
         }

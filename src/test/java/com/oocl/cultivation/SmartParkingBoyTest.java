@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
+import org.omg.CORBA.TIMEOUT;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -125,5 +126,22 @@ class SmartParkingBoyTest {
         //then
         assertEquals("Please provide your parking ticket" , mes);
 
+    }
+
+    //Story 2 AC3
+
+    @Test
+    void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+
+        //when
+        Ticket ticket = smartParkingBoy.goParking(car);
+        String mes = smartParkingBoy.getWrongMes();
+
+        //then
+        assertEquals("Not enough position", mes);
     }
 }
