@@ -7,6 +7,6 @@ public class ParkBoy {
     }
 
     public Car fetchCar(Ticket ticket) {
-        return new Car("123456");
+        return new Car(ticket.getTicketId());
     }
 }
