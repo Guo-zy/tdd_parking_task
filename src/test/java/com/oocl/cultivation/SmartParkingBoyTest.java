@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SmartParkingBoyTest {
 
-    // Story AC1
+    // Story 1 AC1 && AC2
     @Test
     void should_return_ticket_when_goParking_given_car() {
         //given
@@ -20,7 +20,6 @@ class SmartParkingBoyTest {
         assertEquals("666666", ticket.getTicketId());
     }
 
-    //Story AC1
 
     @Test
     void should_return_car_when_fetchCar_given_ticket() {
@@ -36,4 +35,16 @@ class SmartParkingBoyTest {
         assertEquals("666666", car.getCarLicense());
     }
 
+    //Story 1 AC3
+    @Test
+    void should_return_null_when_fetchCar() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+
+        //when
+        Car car = smartParkingBoy.fetchCar(null);
+
+        //then
+        assertEquals(null , car);
+    }
 }
