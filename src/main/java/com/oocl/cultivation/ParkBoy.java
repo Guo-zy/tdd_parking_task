@@ -7,6 +7,7 @@ public class ParkBoy {
     }
 
     public Car fetchCar(Ticket ticket) {
+        if(ticket == null) return null;
         return new Car(ticket.getTicketId());
     }
 }

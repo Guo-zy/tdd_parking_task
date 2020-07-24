@@ -56,8 +56,20 @@ class ParkBoyTest {
 * then: return null
 * */
 
+    @Test
+    void should_return_null_when_fetchCar() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        Car car = new Car("666666");
 
- /*
+        //when
+        Car fetched_car = parkBoy.fetchCar(null);
+
+        //then
+        assertEquals(null , fetched_car);
+    }
+
+    /*
  * Story 1 AC4
  * given : usedTicket , parkBoy
  * when : fetchCar
