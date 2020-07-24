@@ -86,6 +86,7 @@ class SmartParkingBoyTest {
         SmartParkingBoy smartParkingBoy  = new SmartParkingBoy();
         Car car = new Car("666666");
         smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
 
         //when
         Ticket ticket = smartParkingBoy.goParking(car);
@@ -136,6 +137,7 @@ class SmartParkingBoyTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
         Car car = new Car("666666");
         smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
 
         //when
         Ticket ticket = smartParkingBoy.goParking(car);
@@ -144,4 +146,14 @@ class SmartParkingBoyTest {
         //then
         assertEquals("Not enough position", mes);
     }
+
+    /*  Story 4 AC1
+    *   given SmartParkingBoy, carParkPlace0(have 3 car) , carParkPlace1(have 5 car)
+    *   when goParking
+    *   then return 0
+    *
+    *   given SmartParkingBoy, carParkPlace0(have 5 car) , carParkPlace1(have 3 car)
+    *   when goParking
+    *   then return 1
+    * */
 }
