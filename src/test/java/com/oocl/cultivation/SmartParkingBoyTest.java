@@ -92,4 +92,22 @@ class SmartParkingBoyTest {
         //then
         assertEquals(null , ticket);
     }
+    
+    //Story 2 AC1
+
+    @Test
+    void should_return_unrecognized_parking_ticket_when_fetchCar_and_queryMes_given_wrong_ticket() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        smartParkingBoy.goParking(car);
+
+        //when
+        smartParkingBoy.fetchCar(new Ticket("666665"));
+        String mes = smartParkingBoy.getWrongMes();
+
+        //then
+        assertEquals("Unrecognized parking ticket" , mes);
+    }
+
 }
