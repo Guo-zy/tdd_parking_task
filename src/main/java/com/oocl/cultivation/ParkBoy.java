@@ -6,22 +6,29 @@ import java.util.List;
 public class ParkBoy {
 
     private List<Ticket> tickets;
-    private int carCountInParkRoom;
+    private List<ParkCarPlace> parkCarPlaces;
     private String wrongMes;
+    protected  int currentParkCarPlace;
 
     public ParkBoy() {
         this.tickets = new ArrayList<>();
-        this.carCountInParkRoom = 0;
+        this.parkCarPlaces = new ArrayList<>(2);
+        this.currentParkCarPlace = 0;
+        this.parkCarPlaces.add(new ParkCarPlace());
+        this.parkCarPlaces.add(new ParkCarPlace());
     }
 
     public Ticket goParking(Car car) {
-        if(getCarCountInParkRoom() > 10){
+        if(this.parkCarPlaces.get(this.parkCarPlaces.size() - 1).carCountInParkRoom >= 10){
             setWrongMes("Not enough position");
             return null;
         }
+        if((this.parkCarPlaces.get(currentParkCarPlace).carCountInParkRoom >= 10)){
+            currentParkCarPlace ++;
+        }
         Ticket ticket = new Ticket(car.getCarLicense());
         tickets.add(ticket);
-        carCountInParkRoom ++;
+       this.parkCarPlaces.get(currentParkCarPlace).carCountInParkRoom ++;
         return ticket;
     }
 
@@ -41,19 +48,15 @@ public class ParkBoy {
         return null;
     }
 
-    public int getCarCountInParkRoom() {
-        return carCountInParkRoom;
-    }
-
-    public void setCarCountInParkRoom(int carCountInParkRoom) {
-        this.carCountInParkRoom = carCountInParkRoom;
-    }
-
     public void setWrongMes(String wrongMes) {
         this.wrongMes = wrongMes;
     }
 
     public String getWrongMes() {
         return wrongMes;
+    }
+
+    public List<ParkCarPlace> getParkCarPlaces() {
+        return parkCarPlaces;
     }
 }

@@ -121,7 +121,7 @@ class ParkBoyTest {
     void should_return_null_when_goParking_given_park_10_car_in_park_room_and_car() {
         //given
         ParkBoy parkBoy = new ParkBoy();
-        parkBoy.setCarCountInParkRoom(11);
+        parkBoy.getParkCarPlaces().get(1).carCountInParkRoom = 10;
         Car car = new Car("666666");
 
         //when
@@ -185,7 +185,7 @@ class ParkBoyTest {
     void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
         //given
         ParkBoy parkBoy = new ParkBoy();
-        parkBoy.setCarCountInParkRoom(11);
+        parkBoy.getParkCarPlaces().get(1).carCountInParkRoom = 10;
         Car car = new Car("666666");
 
         //when
