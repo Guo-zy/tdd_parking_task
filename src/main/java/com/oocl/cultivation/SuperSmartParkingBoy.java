@@ -10,6 +10,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public Car fetchCar(Ticket ticket) {
+        if(ticket == null) return null;
         return new Car(ticket.getTicketId());
     }
 }
