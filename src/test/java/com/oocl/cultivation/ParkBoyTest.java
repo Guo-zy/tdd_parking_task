@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkBoyTest {
@@ -14,7 +16,21 @@ class ParkBoyTest {
 * then: return car
 * */
 
-/*
+    @Test
+    void shoule_return_ticket_when_goParking_given_car() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        Car car = new Car("666666");
+
+        //when
+        Ticket ticket = parkBoy.goParking(car);
+
+        //then
+        assertEquals("666666", ticket.getTicketId());
+
+    }
+
+    /*
 *   Story 1 AC3
 * given: wrong ticket , parkBoy
 * when: fetchCar
