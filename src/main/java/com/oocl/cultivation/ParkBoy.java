@@ -15,7 +15,10 @@ public class ParkBoy {
     }
 
     public Ticket goParking(Car car) {
-        if(getCarCountInParkRoom() > 10) return null;
+        if(getCarCountInParkRoom() > 10){
+            setWrongMes("Not enough position");
+            return null;
+        }
         Ticket ticket = new Ticket(car.getCarLicense());
         tickets.add(ticket);
         carCountInParkRoom ++;

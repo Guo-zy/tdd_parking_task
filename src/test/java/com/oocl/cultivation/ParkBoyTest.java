@@ -173,10 +173,26 @@ class ParkBoyTest {
         //then
         assertEquals("Please provide your parking ticket" , mes);
     }
+
     /*
     * Story 2 AC3
     * given : parkBoy , parking zoom(have 10 car) , car
     * when : goParking , getWrongMes
     * then : Not enough position.
     * */
+
+    @Test
+    void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        parkBoy.setCarCountInParkRoom(11);
+        Car car = new Car("666666");
+
+        //when
+        Ticket ticket = parkBoy.goParking(car);
+        String mes = parkBoy.getWrongMes();
+
+        //then
+        assertEquals("Not enough position", mes);
+    }
 }
