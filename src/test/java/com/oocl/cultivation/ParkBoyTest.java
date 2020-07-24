@@ -195,4 +195,13 @@ class ParkBoyTest {
         //then
         assertEquals("Not enough position", mes);
     }
+
+    /* Story 3 AC1
+    *  given car , parkCarPlace1(have 10 car) , parkBoy
+    *  when goParking
+    *  then return tickey
+    *
+    * */
+
+
 }
