@@ -23,7 +23,10 @@ public class ParkBoy {
     }
 
     public Car fetchCar(Ticket ticket) {
-        if(ticket == null) return null;
+        if(ticket == null) {
+            setWrongMes("Please provide your parking ticket");
+            return null;
+        }
         if(ticket.isOutDate()) return null;
         for (Ticket ticket_used : tickets ){
             if (ticket.getTicketId() == ticket_used.getTicketId()) {

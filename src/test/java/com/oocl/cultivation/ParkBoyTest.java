@@ -161,7 +161,18 @@ class ParkBoyTest {
     *  then : Please provide your parking ticket.
     * */
 
+    @Test
+    void should_return_please_provide_your_parking_ticket_ticket_when_fetchCar_and_queryMes_given() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
 
+        //when
+        parkBoy.fetchCar(null);
+        String mes = parkBoy.getWrongMes();
+
+        //then
+        assertEquals("Please provide your parking ticket" , mes);
+    }
     /*
     * Story 2 AC3
     * given : parkBoy , parking zoom(have 10 car) , car
