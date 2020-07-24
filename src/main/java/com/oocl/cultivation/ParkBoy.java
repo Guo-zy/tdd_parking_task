@@ -7,6 +7,7 @@ public class ParkBoy {
 
     private List<Ticket> tickets;
     private int carCountInParkRoom;
+    private String wrongMes;
 
     public ParkBoy() {
         this.tickets = new ArrayList<>();
@@ -30,6 +31,7 @@ public class ParkBoy {
                 return new Car(ticket.getTicketId());
             }
         }
+        setWrongMes("Unrecognized parking ticket");
         return null;
     }
 
@@ -39,5 +41,13 @@ public class ParkBoy {
 
     public void setCarCountInParkRoom(int carCountInParkRoom) {
         this.carCountInParkRoom = carCountInParkRoom;
+    }
+
+    public void setWrongMes(String wrongMes) {
+        this.wrongMes = wrongMes;
+    }
+
+    public String getWrongMes() {
+        return wrongMes;
     }
 }

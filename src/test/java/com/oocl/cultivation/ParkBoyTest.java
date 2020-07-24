@@ -135,14 +135,29 @@ class ParkBoyTest {
     /*
     * Story 2 AC1
     *   given : parkBoy  ,  wrong ticket
-    *   when :  queryMes
+    *   when :  getWrongMes , fetchCar
     *   then : Unrecognized parking ticket
     * */
 
+    @Test
+    void should_return_unrecognized_parking_ticket_when_fetchCar_and_queryMes_given_wrong_ticket() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        Car car = new Car("666666");
+        parkBoy.goParking(car);
+        Ticket wrongTicket = new Ticket("666665");
+
+        //when
+        parkBoy.fetchCar(wrongTicket);
+        String mes = parkBoy.getWrongMes();
+
+        //then
+        assertEquals("Unrecognized parking ticket" , mes);
+    }
 
     /* Story 2 AC2
     *  given : parkBoy
-    *  when : queryMes
+    *  when : getWrongMes
     *  then : Please provide your parking ticket.
     * */
 
@@ -150,7 +165,7 @@ class ParkBoyTest {
     /*
     * Story 2 AC3
     * given : parkBoy , parking zoom(have 10 car) , car
-    * when : goParking , queryMes
+    * when : goParking , getWrongMes
     * then : Not enough position.
     * */
 }
