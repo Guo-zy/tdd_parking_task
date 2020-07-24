@@ -24,6 +24,7 @@ class SuperSmartParkingBoyTest {
     void should_return_car_when_fetchCar_given_ticket() {
         //given
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        superSmartParkingBoy.goParking(new Car("666666"));
 
         //when
         Car car = superSmartParkingBoy.fetchCar(new Ticket("666666"));
@@ -44,6 +45,20 @@ class SuperSmartParkingBoyTest {
         //then
         assertEquals(null , car);
 
+    }
+
+    @Test
+    void should_return_null_when_fetchCar_given_wrong_ticket() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("666666");
+        superSmartParkingBoy.goParking(car);
+
+        //when
+        car = superSmartParkingBoy.fetchCar(new Ticket("666665"));
+
+        //then
+        assertEquals(null , car);
     }
 }
 
