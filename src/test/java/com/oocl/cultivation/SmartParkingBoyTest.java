@@ -173,4 +173,21 @@ class SmartParkingBoyTest {
         assertEquals(0 , selectParkCarPlaceNum);
     }
 
+    @Test
+    void should_return_1_when_goParking_given_parkCarPlace0Have5Car_and_parkCarPlace1Have3Car() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(5);
+        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(3);
+
+        //when
+        smartParkingBoy.goParking(car);
+        int selectParkCarPlaceNum = smartParkingBoy.getCurrentParkCarPlace();
+
+        //then
+        assertEquals(1 , selectParkCarPlaceNum);
+    }
+
+
 }
