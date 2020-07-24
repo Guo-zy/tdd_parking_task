@@ -4,12 +4,19 @@ public class SmartParkingBoy  extends ParkingBoy{
 
     @Override
     public Ticket goParking(Car car) {
-        return new Ticket(car.getCarLicense());
+        Ticket ticket =  new Ticket(car.getCarLicense());
+        this.tickets.add(ticket);
+        return ticket;
     }
 
     @Override
     public Car fetchCar(Ticket ticket) {
         if(ticket == null) return null;
-        return new Car(ticket.getTicketId());
+        for(Ticket ticket1 : this.tickets){
+            if(ticket1.getTicketId().equals(ticket.getTicketId())){
+                return new Car(ticket.getTicketId());
+            }
+        }
+        return null;
     }
 }

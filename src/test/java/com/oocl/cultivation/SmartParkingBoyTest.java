@@ -47,4 +47,18 @@ class SmartParkingBoyTest {
         //then
         assertEquals(null , car);
     }
+
+    @Test
+    void should_return_null_when_fetchCar_given_wrong_ticket() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        smartParkingBoy.goParking(car);
+
+        //when
+         car = smartParkingBoy.fetchCar(new Ticket("666665"));
+
+        //then
+        assertEquals(null , car);
+    }
 }
