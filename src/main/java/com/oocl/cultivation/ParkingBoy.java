@@ -34,4 +34,8 @@ public abstract  class ParkingBoy {
     public List<ParkCarPlace> getParkCarPlaces() {
         return parkCarPlaces;
     }
+
+    public int getCurrentParkCarPlace() {
+        return currentParkCarPlace;
+    }
 }
