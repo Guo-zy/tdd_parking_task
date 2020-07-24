@@ -199,9 +199,21 @@ class ParkBoyTest {
     /* Story 3 AC1
     *  given car , parkCarPlace1(have 10 car) , parkBoy
     *  when goParking
-    *  then return tickey
+    *  then return ticket
     *
     * */
 
+    @Test
+    void should_return_ticket_when_goParking_given_car_and_park_car_place1_have_10() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        Car car = new Car("666666");
+        parkBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
 
+        //when
+        Ticket ticket = parkBoy.goParking(car);
+
+        //then
+        assertEquals("666666" , ticket.getTicketId());
+    }
 }
