@@ -19,4 +19,19 @@ class SuperSmartParkingBoyTest {
         //then
         assertEquals("666666",ticket.getTicketId());
     }
+
+    @Test
+    void should_return_car_when_fetchCar_given_ticket() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+
+        //when
+        Car car = superSmartParkingBoy.fetchCar(new Ticket("666666"));
+
+        //then
+        assertEquals("666666",car.getCarLicense());
+    }
+
+
 }
+
