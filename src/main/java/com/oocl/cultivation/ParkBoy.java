@@ -19,8 +19,12 @@ public class ParkBoy {
 
     public Car fetchCar(Ticket ticket) {
         if(ticket == null) return null;
+        if(ticket.isOutDate()) return null;
         for (Ticket ticket_used : tickets ){
-            if (ticket.getTicketId() == ticket_used.getTicketId()) return new Car(ticket.getTicketId());
+            if (ticket.getTicketId() == ticket_used.getTicketId()) {
+                ticket.setOutDate(true);
+                return new Car(ticket.getTicketId());
+            }
         }
         return null;
     }

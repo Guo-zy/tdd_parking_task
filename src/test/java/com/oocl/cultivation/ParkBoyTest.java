@@ -91,6 +91,20 @@ class ParkBoyTest {
  *
  * */
 
+    @Test
+    void should_return_null_when_fetchCar_given_used_ticket() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        Car car = new Car("666666");
+        Ticket ticket = parkBoy.goParking(car);
+        parkBoy.fetchCar(ticket);
+
+        //when
+        Car fetched_car = parkBoy.fetchCar(ticket);
+
+        //then
+        assertEquals(null , fetched_car);
+    }
 
     /*
     * Story 1 AC5
