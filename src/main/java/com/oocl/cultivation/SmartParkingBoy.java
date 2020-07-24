@@ -4,7 +4,7 @@ public class SmartParkingBoy  extends ParkingBoy{
 
     @Override
     public Ticket goParking(Car car) {
-        return null;
+        return new Ticket(car.getCarLicense());
     }
 
     @Override
