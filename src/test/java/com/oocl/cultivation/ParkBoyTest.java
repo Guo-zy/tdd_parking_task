@@ -17,7 +17,7 @@ class ParkBoyTest {
 * */
 
     @Test
-    void shoule_return_ticket_when_goParking_given_car() {
+    void should_return_ticket_when_goParking_given_car() {
         //given
         ParkBoy parkBoy = new ParkBoy();
         Car car = new Car("666666");
