@@ -130,4 +130,27 @@ class ParkBoyTest {
         //then
         assertEquals(null, ticket);
     }
+
+
+    /*
+    * Story 2 AC1
+    *   given : parkBoy  ,  wrong ticket
+    *   when :  queryMes
+    *   then : Unrecognized parking ticket
+    * */
+
+
+    /* Story 2 AC2
+    *  given : parkBoy
+    *  when : queryMes
+    *  then : Please provide your parking ticket.
+    * */
+
+
+    /*
+    * Story 2 AC3
+    * given : parkBoy , parking zoom(have 10 car) , car
+    * when : goParking , queryMes
+    * then : Not enough position.
+    * */
 }
