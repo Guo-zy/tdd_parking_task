@@ -1,6 +1,9 @@
 package com.oocl.cultivation;
 
+import javafx.scene.shape.TriangleMesh;
 import org.junit.jupiter.api.Test;
+
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -114,4 +117,17 @@ class ParkBoyTest {
     *
     * */
 
+    @Test
+    void should_return_null_when_goParking_given_park_10_car_in_park_room_and_car() {
+        //given
+        ParkBoy parkBoy = new ParkBoy();
+        parkBoy.setCarCountInParkRoom(11);
+        Car car = new Car("666666");
+
+        //when
+        Ticket ticket = parkBoy.goParking(car);
+
+        //then
+        assertEquals(null, ticket);
+    }
 }

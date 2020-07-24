@@ -6,14 +6,18 @@ import java.util.List;
 public class ParkBoy {
 
     private List<Ticket> tickets;
+    private int carCountInParkRoom;
 
     public ParkBoy() {
         this.tickets = new ArrayList<>();
+        this.carCountInParkRoom = 0;
     }
 
     public Ticket goParking(Car car) {
+        if(getCarCountInParkRoom() > 10) return null;
         Ticket ticket = new Ticket(car.getCarLicense());
         tickets.add(ticket);
+        carCountInParkRoom ++;
         return ticket;
     }
 
@@ -27,5 +31,13 @@ public class ParkBoy {
             }
         }
         return null;
+    }
+
+    public int getCarCountInParkRoom() {
+        return carCountInParkRoom;
+    }
+
+    public void setCarCountInParkRoom(int carCountInParkRoom) {
+        this.carCountInParkRoom = carCountInParkRoom;
     }
 }
