@@ -4,6 +4,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public Ticket goParking(Car car) {
+        if(getParkCarPlaces().get(0).getCarCountInParkRoom() >=10
+            && getParkCarPlaces().get(1).getCarCountInParkRoom() >= 10){
+            return null;
+        }
         Ticket ticket = new Ticket(car.getCarLicense());
         this.tickets.add(ticket);
         return ticket;

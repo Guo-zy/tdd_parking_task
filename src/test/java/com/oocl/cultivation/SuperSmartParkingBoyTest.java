@@ -77,5 +77,24 @@ class SuperSmartParkingBoyTest {
         //then
         assertEquals(null , car);
     }
+
+    //test AC1_5
+
+    @Test
+    void should_return_null_when_goParking_given_park_10_car_in_park_room_and_car() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("666666");
+        superSmartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
+        superSmartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+
+        //when
+        Ticket ticket = superSmartParkingBoy.goParking(car);
+
+        //then
+        assertEquals(null , ticket);
+
+    }
+
 }
 
