@@ -12,8 +12,10 @@ public class SmartParkingBoy  extends ParkingBoy{
     @Override
     public Car fetchCar(Ticket ticket) {
         if(ticket == null) return null;
+        if(ticket.isOutDate()) return null;
         for(Ticket ticket1 : this.tickets){
             if(ticket1.getTicketId().equals(ticket.getTicketId())){
+                ticket.setOutDate(true);
                 return new Car(ticket.getTicketId());
             }
         }

@@ -61,4 +61,22 @@ class SmartParkingBoyTest {
         //then
         assertEquals(null , car);
     }
+
+    // Story 1 AC4
+
+
+    @Test
+    void should_return_null_when_fetchCar_given_used_ticket() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        Ticket ticket = smartParkingBoy.goParking(car);
+        smartParkingBoy.fetchCar(ticket);
+
+        //when
+        car = smartParkingBoy.fetchCar(ticket);
+
+        //then
+        assertEquals(null , car);
+    }
 }
