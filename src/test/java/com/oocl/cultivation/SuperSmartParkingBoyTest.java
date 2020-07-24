@@ -43,7 +43,7 @@ class SuperSmartParkingBoyTest {
         Car car = superSmartParkingBoy.fetchCar(null);
 
         //then
-        assertEquals(null , car);
+        assertEquals(null, car);
 
     }
 
@@ -56,6 +56,23 @@ class SuperSmartParkingBoyTest {
 
         //when
         car = superSmartParkingBoy.fetchCar(new Ticket("666665"));
+
+        //then
+        assertEquals(null, car);
+    }
+
+    //test AC1_4
+
+    @Test
+    void should_return_null_when_fetchCar_given_used_ticket() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("666666");
+        Ticket ticket = superSmartParkingBoy.goParking(car);
+        superSmartParkingBoy.fetchCar(ticket);
+
+        //when
+        car = superSmartParkingBoy.fetchCar(ticket);
 
         //then
         assertEquals(null , car);
