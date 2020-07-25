@@ -13,9 +13,7 @@ public class SmartParkingBoy extends ParkingBoy {
         if(parkCarPlace0HasCar != parkCarPlace1HasCar){
             currentParkCarPlace = parkCarPlace0HasCar > parkCarPlace1HasCar ? 0 : 1;
         }
-        if (this.getParkCarPlaces().get(0).getEmptyPlace() <= 0
-                && this.getParkCarPlaces().get(1).getEmptyPlace() <= 0) {
-            setWrongMes("Not enough position");
+        if (isNotEnoughPostition()) {
             return null;
         }
         if (this.getParkCarPlaces().get(0).getEmptyPlace() <= 0 ) {
@@ -26,6 +24,15 @@ public class SmartParkingBoy extends ParkingBoy {
         int emptyPlace = this.getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
         this.getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
         return ticket;
+    }
+
+    //计算是否有足够的停车位置
+    private boolean isNotEnoughPostition() {
+        for(int i = 0; i < getParkCarPlaces().size(); i ++){
+            if(getParkCarPlaces().get(i).getEmptyPlace() != 0)  return false;
+        }
+        setWrongMes("Not enough position");
+        return true;
     }
 
     @Override

@@ -136,6 +136,7 @@ class SuperSmartParkingBoyTest {
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
         superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
+
         Car car = new Car("666666");
 
         //when

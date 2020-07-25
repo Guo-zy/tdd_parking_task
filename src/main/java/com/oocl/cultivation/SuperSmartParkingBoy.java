@@ -9,14 +9,21 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     @Override
     public Ticket goParking(Car car) {
         getMaxPositionRateNum();
-        if (getParkCarPlaces().get(0).getEmptyPlace() <= 0
-                && getParkCarPlaces().get(1).getEmptyPlace() >= 0) {
-            setWrongMes("Not enough position");
+        if(isNotEnoughPostition()){
             return null;
         }
         Ticket ticket = new Ticket(car.getCarLicense());
         this.tickets.add(ticket);
         return ticket;
+    }
+
+    //计算是否有足够的停车位置
+    private boolean isNotEnoughPostition() {
+        for(int i = 0; i < getParkCarPlaces().size(); i ++){
+            if(getParkCarPlaces().get(i).getEmptyPlace() != 0)  return false;
+        }
+        setWrongMes("Not enough position");
+        return true;
     }
 
     //计算最大可用位置可用率
