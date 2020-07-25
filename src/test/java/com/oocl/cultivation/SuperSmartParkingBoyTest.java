@@ -85,8 +85,8 @@ class SuperSmartParkingBoyTest {
         //given
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
         Car car = new Car("666666");
-        superSmartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
-        superSmartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+        superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
+        superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
 
         //when
         Ticket ticket = superSmartParkingBoy.goParking(car);
@@ -133,8 +133,8 @@ class SuperSmartParkingBoyTest {
     void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
         //given
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
-        superSmartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
-        superSmartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+        superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
+        superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
         Car car = new Car("666666");
 
         //when
@@ -144,5 +144,18 @@ class SuperSmartParkingBoyTest {
         //then
         assertEquals("Not enough position" , mes);
     }
+
+    // test AC5_1
+    /*  Story 5
+    *   given : parkBoy , parkCarPlace0Has7Place , parkCarPlace1Has3Place;
+    *   when : goParking
+    *   then : return 0;
+    *
+    *   given : parkBoy , parkCarPlace0Has3Place , parkCarPlace1Has7Place;
+    *   when : goParking
+    *   then : return 1;
+    * */
+
+
 }
 

@@ -1,16 +1,17 @@
 package com.oocl.cultivation;
 
 public class ParkCarPlace {
-    protected  int carCountInParkRoom = 0;
+    protected static final  int ALLPALCE = 10;
+    private   int emptyPlace = 10;
 
     public ParkCarPlace() {
     }
 
-    public int getCarCountInParkRoom() {
-        return carCountInParkRoom;
+    public int getEmptyPlace() {
+        return emptyPlace;
     }
 
-    public void setCarCountInParkRoom(int carCountInParkRoom) {
-        this.carCountInParkRoom = carCountInParkRoom;
+    public void setEmptyPlace(int emptyPlace) {
+        this.emptyPlace = emptyPlace;
     }
 }

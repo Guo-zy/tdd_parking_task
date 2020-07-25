@@ -8,16 +8,17 @@ public class NoSmartParkingBoy extends ParkingBoy{
 
     @Override
     public Ticket goParking(Car car) {
-        if(this.parkCarPlaces.get(this.parkCarPlaces.size() - 1).carCountInParkRoom >= 10){
+        if(this.parkCarPlaces.get(this.parkCarPlaces.size() - 1).getEmptyPlace() <= 0){
             setWrongMes("Not enough position");
             return null;
         }
-        if((this.parkCarPlaces.get(currentParkCarPlace).carCountInParkRoom >= 10)){
+        if((this.parkCarPlaces.get(currentParkCarPlace).getEmptyPlace() >= 0)){
             currentParkCarPlace ++;
         }
         Ticket ticket = new Ticket(car.getCarLicense());
         tickets.add(ticket);
-        this.parkCarPlaces.get(currentParkCarPlace).carCountInParkRoom ++;
+        int emptyPlace =   this.parkCarPlaces.get(currentParkCarPlace).getEmptyPlace() - 1;
+        this.parkCarPlaces.get(currentParkCarPlace).setEmptyPlace(emptyPlace);
         return ticket;
     }
 

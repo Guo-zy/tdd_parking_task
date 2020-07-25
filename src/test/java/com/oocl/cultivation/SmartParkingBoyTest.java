@@ -85,8 +85,8 @@ class SmartParkingBoyTest {
         //given
         SmartParkingBoy smartParkingBoy  = new SmartParkingBoy();
         Car car = new Car("666666");
-        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
-        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
+        smartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
+        smartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
 
         //when
         Ticket ticket = smartParkingBoy.goParking(car);
@@ -136,8 +136,8 @@ class SmartParkingBoyTest {
         //given
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
         Car car = new Car("666666");
-        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
-        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
+        smartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
+        smartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
 
         //when
         Ticket ticket = smartParkingBoy.goParking(car);
@@ -162,8 +162,8 @@ class SmartParkingBoyTest {
         //given
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
         Car car = new Car("666666");
-        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(3);
-        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(5);
+        smartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(7);
+        smartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(5);
 
         //when
         smartParkingBoy.goParking(car);
@@ -178,8 +178,8 @@ class SmartParkingBoyTest {
         //given
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
         Car car = new Car("666666");
-        smartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(5);
-        smartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(3);
+        smartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(5);
+        smartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(7);
 
         //when
         smartParkingBoy.goParking(car);

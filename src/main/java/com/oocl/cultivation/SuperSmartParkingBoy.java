@@ -4,8 +4,8 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public Ticket goParking(Car car) {
-        if(getParkCarPlaces().get(0).getCarCountInParkRoom() >=10
-            && getParkCarPlaces().get(1).getCarCountInParkRoom() >= 10){
+        if(getParkCarPlaces().get(0).getEmptyPlace() <= 0
+            && getParkCarPlaces().get(1).getEmptyPlace() >= 0){
             setWrongMes("Not enough position");
             return null;
         }

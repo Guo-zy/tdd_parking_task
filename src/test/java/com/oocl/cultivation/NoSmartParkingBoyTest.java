@@ -118,7 +118,7 @@ class NoSmartParkingBoyTest {
     void should_return_null_when_goParking_given_park_10_car_in_park_room_and_car() {
         //given
         ParkingBoy noSmartParkingBoy = new NoSmartParkingBoy();
-        noSmartParkingBoy.getParkCarPlaces().get(1).carCountInParkRoom = 10;
+        noSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
         Car car = new Car("666666");
 
         //when
@@ -182,7 +182,7 @@ class NoSmartParkingBoyTest {
     void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
         //given
         ParkingBoy noSmartParkingBoy = new NoSmartParkingBoy();
-        noSmartParkingBoy.getParkCarPlaces().get(1).carCountInParkRoom = 10;
+        noSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
         Car car = new Car("666666");
 
         //when
@@ -205,7 +205,7 @@ class NoSmartParkingBoyTest {
         //given
         ParkingBoy noSmartParkingBoy = new NoSmartParkingBoy();
         Car car = new Car("666666");
-        noSmartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
+        noSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
 
         //when
         Ticket ticket = noSmartParkingBoy.goParking(car);
