@@ -60,18 +60,24 @@ public class NoSmartParkingBoy extends ParkingBoy{
         if(ticketIsWrong(ticket)){
             return null;
         }
-            return new Car(ticket.getTicketId());
+            return fetch(ticket);
 
     }
+
+    //根据票给客户取车
+    private Car fetch(Ticket ticket) {
+        ticket.setOutDate(true);
+        int emptyPlace = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
+        this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
+        return  new Car(ticket.getTicketId());
+    }
+
 
 
     //判断票是否错误
     private boolean ticketIsWrong(Ticket ticket) {
         for (Ticket ticket_used : tickets ){
             if (ticket.getTicketId() == ticket_used.getTicketId()) {
-                ticket.setOutDate(true);
-                int emptyPlace = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
-                this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
                 return false;
             }
         }
