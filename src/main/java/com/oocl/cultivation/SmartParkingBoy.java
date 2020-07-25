@@ -8,16 +8,12 @@ public class SmartParkingBoy extends ParkingBoy {
 
     @Override
     public Ticket goParking(Car car) {
-        selectMaxEmptyPlaceNum();
         if (isNotEnoughPostition()) {
             return null;
         }
-        if (isCurrentParkCarPlaceFull()) {
-                return null;
-        }
+        selectMaxEmptyPlaceNum();
         return parKing(car);
     }
-
 
     //计算当前停车场是否为满
     private  boolean isCurrentParkCarPlaceFull(){

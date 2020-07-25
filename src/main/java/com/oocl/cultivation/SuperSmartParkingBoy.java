@@ -8,10 +8,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public Ticket goParking(Car car) {
-        getMaxPositionRateNum();
         if(isNotEnoughPostition()){
             return null;
         }
+        getMaxPositionRateNum();
         return parKing(car);
     }
 
