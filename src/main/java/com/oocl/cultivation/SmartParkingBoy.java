@@ -2,6 +2,10 @@ package com.oocl.cultivation;
 
 public class SmartParkingBoy extends ParkingBoy {
 
+    public SmartParkingBoy(int parkCarPlaceCount) {
+        super(parkCarPlaceCount);
+    }
+
     @Override
     public Ticket goParking(Car car) {
         int parkCarPlace0HasCar = this.getParkCarPlaces().get(0).getEmptyPlace();

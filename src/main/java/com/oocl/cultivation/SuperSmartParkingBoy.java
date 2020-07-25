@@ -2,15 +2,15 @@ package com.oocl.cultivation;
 
 public class SuperSmartParkingBoy extends ParkingBoy {
 
+    public SuperSmartParkingBoy(int parkCarPlaceCount) {
+        super(parkCarPlaceCount);
+    }
+
     @Override
     public Ticket goParking(Car car) {
-        double position0Rate = this.getParkCarPlaces().get(0).getEmptyPlace() / (double)this.getParkCarPlaces().get(0).ALLPALCE;
-        double position1Rate = this.getParkCarPlaces().get(1).getEmptyPlace() / (double)this.getParkCarPlaces().get(1).ALLPALCE;
-        if(position0Rate != position1Rate){
-            this.currentParkCarPlace = position0Rate > position1Rate ? 0 : 1;
-        }
-        if(getParkCarPlaces().get(0).getEmptyPlace() <= 0
-            && getParkCarPlaces().get(1).getEmptyPlace() >= 0){
+        getMaxPositionRateNum();
+        if (getParkCarPlaces().get(0).getEmptyPlace() <= 0
+                && getParkCarPlaces().get(1).getEmptyPlace() >= 0) {
             setWrongMes("Not enough position");
             return null;
         }
@@ -19,17 +19,32 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         return ticket;
     }
 
+    //计算最大可用位置可用率
+    private void getMaxPositionRateNum() {
+        double currentPositionRate = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() / (double) getParkCarPlaces().get(0).ALLPALCE;
+        int maxPositionRateNum = currentParkCarPlace;
+        double maxPositionRate = currentPositionRate;
+        for (int i = 0; i < this.getParkCarPlaces().size(); i++) {
+            double positionRate = getParkCarPlaces().get(i).getEmptyPlace() / (double) getParkCarPlaces().get(i).ALLPALCE;
+            if (positionRate > maxPositionRate) {
+                maxPositionRate = positionRate;
+                maxPositionRateNum = i;
+            }
+        }
+        currentParkCarPlace = maxPositionRateNum;
+    }
+
     @Override
     public Car fetchCar(Ticket ticket) {
-        if(ticket == null){
+        if (ticket == null) {
             setWrongMes("Please provide your parking ticket");
             return null;
         }
-        if(ticket.isOutDate()) return  null;
-        for(Ticket ticket1 : tickets){
-            if(ticket1.getTicketId().equals(ticket.getTicketId())){
+        if (ticket.isOutDate()) return null;
+        for (Ticket ticket1 : tickets) {
+            if (ticket1.getTicketId().equals(ticket.getTicketId())) {
                 ticket.setOutDate(true);
-                int emptyPlace  = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
+                int emptyPlace = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
                 this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
                 return new Car(ticket.getTicketId());
             }

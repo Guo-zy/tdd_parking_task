@@ -11,7 +11,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_ticket_when_goParking_given_car() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
 
         //when
@@ -24,7 +24,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_car_when_fetchCar_given_ticket() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         superSmartParkingBoy.goParking(new Car("666666"));
 
         //when
@@ -38,7 +38,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_null_when_fetchCar() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
 
         //when
         Car car = superSmartParkingBoy.fetchCar(null);
@@ -51,7 +51,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_null_when_fetchCar_given_wrong_ticket() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         superSmartParkingBoy.goParking(car);
 
@@ -67,7 +67,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_null_when_fetchCar_given_used_ticket() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         Ticket ticket = superSmartParkingBoy.goParking(car);
         superSmartParkingBoy.fetchCar(ticket);
@@ -84,7 +84,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_null_when_goParking_given_park_10_car_in_park_room_and_car() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
         superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
@@ -101,7 +101,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_unrecognized_parking_ticket_when_fetchCar_and_queryMes_given_wrong_ticket() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         Ticket ticket = superSmartParkingBoy.goParking(car);
 
@@ -118,7 +118,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_please_provide_your_parking_ticket_ticket_when_fetchCar_and_queryMes_given() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
 
         //when
         superSmartParkingBoy.fetchCar(null);
@@ -133,7 +133,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(0);
         superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(0);
         Car car = new Car("666666");
@@ -160,11 +160,10 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_0_when_goParking_given_parkCarPlace0Has7Palce_and_parkCarPlace1Has3Place() {
         //give
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(7);
         superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(3);
-
         //when
         superSmartParkingBoy.goParking(car);
         int selectPlace = superSmartParkingBoy.getCurrentParkCarPlace();
@@ -176,7 +175,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_1_when_goParking_given_parkCarPlace0Has3Palce_and_parkCarPlace1Has7Place() {
         //give
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(3);
         superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(7);
@@ -198,7 +197,7 @@ class SuperSmartParkingBoyTest {
     @Test
     void should_return_6_when_fetchCar_given_parCarPlace0Has7Place_and_car() {
         //given
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(2);
         Car car = new Car("666666");
         Ticket ticket = superSmartParkingBoy.goParking(car);
         superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(7);

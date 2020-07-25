@@ -5,6 +5,9 @@ package com.oocl.cultivation;
 public class NoSmartParkingBoy extends ParkingBoy{
 
 
+    public NoSmartParkingBoy(int parkCarPlaceCount) {
+        super(parkCarPlaceCount);
+    }
 
     @Override
     public Ticket goParking(Car car) {
