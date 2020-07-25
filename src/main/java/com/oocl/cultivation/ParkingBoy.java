@@ -40,4 +40,8 @@ public abstract  class ParkingBoy {
     public int getCurrentParkCarPlace() {
         return currentParkCarPlace;
     }
+
+    public void setCurrentParkCarPlace(int currentParkCarPlace) {
+        this.currentParkCarPlace = currentParkCarPlace;
+    }
 }

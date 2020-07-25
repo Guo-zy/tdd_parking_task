@@ -15,9 +15,14 @@ public class NoSmartParkingBoy extends ParkingBoy{
             return null;
         }
         if(isCurrentParkCarPlaceFull()){
-            currentParkCarPlace ++;
+            selectNextParkCarPlace();
         }
         return parKing(car);
+    }
+
+    //选择下一个停车场
+    private void selectNextParkCarPlace() {
+        setCurrentParkCarPlace(getCurrentParkCarPlace() + 1);
     }
 
     //当前停车场是否满了
