@@ -11,15 +11,28 @@ public class NoSmartParkingBoy extends ParkingBoy{
 
     @Override
     public Ticket goParking(Car car) {
-        if(this.parkCarPlaces.get(this.parkCarPlaces.size() - 1).getEmptyPlace() <= 0){
-            setWrongMes("Not enough position");
+        if(isFullInLastPlace()){
             return null;
         }
-        if((this.parkCarPlaces.get(currentParkCarPlace).getEmptyPlace() >= 0)){
+        if(isCurrentParkCarPlaceFull()){
             currentParkCarPlace ++;
         }
-        Ticket ticket = parKing(car);
-        return ticket;
+        return parKing(car);
+    }
+
+    //当前停车场是否满了
+    private boolean isCurrentParkCarPlaceFull() {
+        return getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() <= 0;
+    }
+
+
+    //判断最后一个停车场是否满
+    private boolean isFullInLastPlace() {
+        if (getParkCarPlaces().get(getParkCarPlaces().size() - 1).getEmptyPlace() <= 0){
+            setWrongMes("Not enough position");
+            return true;
+        }
+        return false;
     }
 
     //停车并给票

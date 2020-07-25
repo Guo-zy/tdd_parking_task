@@ -12,8 +12,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         if(isNotEnoughPostition()){
             return null;
         }
-       Ticket ticket = parKing(car);
-        return ticket;
+        return parKing(car);
     }
 
     //停车并给票

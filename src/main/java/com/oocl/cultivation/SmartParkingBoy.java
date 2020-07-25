@@ -15,8 +15,7 @@ public class SmartParkingBoy extends ParkingBoy {
         if (isCurrentParkCarPlaceFull()) {
                 return null;
         }
-        Ticket ticket = parKing(car);
-        return ticket;
+        return parKing(car);
     }
 
 
