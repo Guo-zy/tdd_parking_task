@@ -111,5 +111,20 @@ class SuperSmartParkingBoyTest {
         //then
         assertEquals("Unrecognized parking ticket" , mes);
     }
+
+    //test AC2_2
+
+    @Test
+    void should_return_please_provide_your_parking_ticket_ticket_when_fetchCar_and_queryMes_given() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+
+        //when
+        superSmartParkingBoy.fetchCar(null);
+        String mes = superSmartParkingBoy.getWrongMes();
+
+        //then
+        assertEquals("Please provide your parking ticket" , mes);
+    }
 }
 
