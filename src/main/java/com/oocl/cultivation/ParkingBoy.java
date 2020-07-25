@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract  class ParkingBoy {
-    protected List<Ticket> tickets;
-    protected List<ParkCarPlace> parkCarPlaces;
-    protected String wrongMes;
-    protected  int currentParkCarPlace; // 当前停车男孩应该停车的停车场编号
+    private List<Ticket> tickets;
+    private List<ParkCarPlace> parkCarPlaces;
+    private String wrongMes;
+    private  int currentParkCarPlace; // 当前停车男孩应该停车的停车场编号
 
     public ParkingBoy(int parkCarPlaceCount) {
         this.tickets = new ArrayList<>();
@@ -43,5 +43,9 @@ public abstract  class ParkingBoy {
 
     public void setCurrentParkCarPlace(int currentParkCarPlace) {
         this.currentParkCarPlace = currentParkCarPlace;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 }

@@ -30,9 +30,9 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     //停车并给票
     private Ticket parKing(Car car) {
         Ticket ticket = new Ticket(car.getCarLicense());
-        this.tickets.add(ticket);
-        int emptyPlace = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
-        getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
+        getTickets().add(ticket);
+        int emptyPlace = getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() - 1;
+        getParkCarPlaces().get(getCurrentParkCarPlace()).setEmptyPlace(emptyPlace);
         return ticket;
     }
 
@@ -48,8 +48,8 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     //计算最大可用位置可用率
     private void getMaxPositionRateNum() {
-        double currentPositionRate = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() / (double) getParkCarPlaces().get(0).ALLPALCE;
-        int maxPositionRateNum = currentParkCarPlace;
+        double currentPositionRate = getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() / (double) getParkCarPlaces().get(0).ALLPALCE;
+        int maxPositionRateNum = getCurrentParkCarPlace();
         double maxPositionRate = currentPositionRate;
         for (int i = 0; i < this.getParkCarPlaces().size(); i++) {
             double positionRate = getParkCarPlaces().get(i).getEmptyPlace() / (double) getParkCarPlaces().get(i).ALLPALCE;
@@ -58,21 +58,21 @@ public class SuperSmartParkingBoy extends ParkingBoy {
                 maxPositionRateNum = i;
             }
         }
-        currentParkCarPlace = maxPositionRateNum;
+        setCurrentParkCarPlace(maxPositionRateNum);
     }
 
 
     //根据票给客户取车
     private Car fetch(Ticket ticket) {
         ticket.setOutDate(true);
-        int emptyPlace = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
-        this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
+        int emptyPlace = this.getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() + 1;
+        this.getParkCarPlaces().get(getCurrentParkCarPlace()).setEmptyPlace(emptyPlace);
         return  new Car(ticket.getTicketId());
     }
 
     //判断票是否错误
     private boolean ticketIsWrong(Ticket ticket) {
-        for (Ticket ticket_used : tickets ){
+        for (Ticket ticket_used : getTickets() ){
             if (ticket.getTicketId() == ticket_used.getTicketId()) {
                 return false;
             }

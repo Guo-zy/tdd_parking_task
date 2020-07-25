@@ -30,7 +30,7 @@ public class SmartParkingBoy extends ParkingBoy {
 
     //计算当前停车场是否为满
     private  boolean isCurrentParkCarPlaceFull(){
-        return this.getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() <= 0;
+        return this.getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() <= 0;
     }
 
     //计算哪个停车场最优
@@ -44,15 +44,15 @@ public class SmartParkingBoy extends ParkingBoy {
                 maxEmptyPlaceNum = i;
             }
         }
-        currentParkCarPlace = maxEmptyPlaceNum;
+        setCurrentParkCarPlace(maxEmptyPlaceNum);
     }
 
     //停车并给票
     private Ticket parKing(Car car) {
         Ticket ticket = new Ticket(car.getCarLicense());
-        this.tickets.add(ticket);
-        int emptyPlace = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
-        getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
+        getTickets().add(ticket);
+        int emptyPlace = getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() - 1;
+        getParkCarPlaces().get(getCurrentParkCarPlace()).setEmptyPlace(emptyPlace);
         return ticket;
     }
 
@@ -68,15 +68,15 @@ public class SmartParkingBoy extends ParkingBoy {
     //根据票给客户取车
     private Car fetch(Ticket ticket) {
         ticket.setOutDate(true);
-        int emptyPlace = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
-        this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
+        int emptyPlace = this.getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() + 1;
+        this.getParkCarPlaces().get(getCurrentParkCarPlace()).setEmptyPlace(emptyPlace);
         return  new Car(ticket.getTicketId());
     }
 
 
     //判断票是否错误
     private boolean ticketIsWrong(Ticket ticket) {
-        for (Ticket ticket_used : tickets ){
+        for (Ticket ticket_used : getTickets() ){
             if (ticket.getTicketId() == ticket_used.getTicketId()) {
                 return false;
             }
