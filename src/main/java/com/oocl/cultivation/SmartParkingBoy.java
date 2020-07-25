@@ -12,11 +12,17 @@ public class SmartParkingBoy extends ParkingBoy {
         if (isNotEnoughPostition()) {
             return null;
         }
-        if (this.getParkCarPlaces().get(0).getEmptyPlace() <= 0) {
-            this.currentParkCarPlace++;
+        if (isCurrentParkCarPlaceFull()) {
+                return null;
         }
         Ticket ticket = parKing(car);
         return ticket;
+    }
+
+
+    //计算当前停车场是否为满
+    private  boolean isCurrentParkCarPlaceFull(){
+        return this.getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() <= 0;
     }
 
     //计算哪个停车场最优
