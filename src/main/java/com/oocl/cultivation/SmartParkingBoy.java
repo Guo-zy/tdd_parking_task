@@ -54,8 +54,7 @@ public class SmartParkingBoy extends ParkingBoy {
 
     @Override
     public Car fetchCar(Ticket ticket) {
-        if (ticket == null) {
-            setWrongMes("Please provide your parking ticket");
+        if (ticketIsNull(ticket)) {
             return null;
         }
         if (ticket.isOutDate()) return null;
@@ -70,4 +69,14 @@ public class SmartParkingBoy extends ParkingBoy {
         setWrongMes("Unrecognized parking ticket");
         return null;
     }
+
+    //判断票为空
+    private boolean ticketIsNull(Ticket ticket) {
+        if(ticket == null) {
+            setWrongMes("Please provide your parking ticket");
+            return true;
+        }
+        return false;
+    }
+
 }

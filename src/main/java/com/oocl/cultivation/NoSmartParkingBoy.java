@@ -40,6 +40,7 @@ public class NoSmartParkingBoy extends ParkingBoy{
         return false;
     }
 
+
     //停车并给票
     private Ticket parKing(Car car) {
         Ticket ticket = new Ticket(car.getCarLicense());
@@ -52,8 +53,7 @@ public class NoSmartParkingBoy extends ParkingBoy{
 
     @Override
     public Car fetchCar(Ticket ticket) {
-        if(ticket == null) {
-            setWrongMes("Please provide your parking ticket");
+        if(ticketIsNull(ticket)){
             return null;
         }
         if(ticket.isOutDate()) return null;
@@ -66,6 +66,17 @@ public class NoSmartParkingBoy extends ParkingBoy{
         setWrongMes("Unrecognized parking ticket");
         return null;
     }
+
+    //判断票为空
+    private boolean ticketIsNull(Ticket ticket) {
+        if(ticket == null) {
+            setWrongMes("Please provide your parking ticket");
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 }
