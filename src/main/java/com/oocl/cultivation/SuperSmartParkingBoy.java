@@ -6,6 +6,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     public Ticket goParking(Car car) {
         if(getParkCarPlaces().get(0).getCarCountInParkRoom() >=10
             && getParkCarPlaces().get(1).getCarCountInParkRoom() >= 10){
+            setWrongMes("Not enough position");
             return null;
         }
         Ticket ticket = new Ticket(car.getCarLicense());

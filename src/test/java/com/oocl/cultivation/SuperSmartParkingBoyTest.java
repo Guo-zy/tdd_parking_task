@@ -126,5 +126,23 @@ class SuperSmartParkingBoyTest {
         //then
         assertEquals("Please provide your parking ticket" , mes);
     }
+
+    //test AC2_3
+
+    @Test
+    void should_return_not_enough_position_when_goParking_and_queryMes_given_car_and_park_zoom_have_10() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        superSmartParkingBoy.getParkCarPlaces().get(0).setCarCountInParkRoom(10);
+        superSmartParkingBoy.getParkCarPlaces().get(1).setCarCountInParkRoom(10);
+        Car car = new Car("666666");
+
+        //when
+        superSmartParkingBoy.goParking(car);
+        String mes = superSmartParkingBoy.getWrongMes();
+
+        //then
+        assertEquals("Not enough position" , mes);
+    }
 }
 
