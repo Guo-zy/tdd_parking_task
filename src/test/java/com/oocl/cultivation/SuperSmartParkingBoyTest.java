@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
+import org.omg.PortableInterceptor.SUCCESSFUL;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -188,5 +189,25 @@ class SuperSmartParkingBoyTest {
         assertEquals(1, selectPlace);
     }
 
+    /*
+    * given parkBoy , car , parkCarPlace0Has7Place
+    * when fecthCar
+    * then return 8
+    * */
+
+    @Test
+    void should_return_6_when_fetchCar_given_parCarPlace0Has7Place_and_car() {
+        //given
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("666666");
+        Ticket ticket = superSmartParkingBoy.goParking(car);
+        superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(7);
+
+        //when
+        superSmartParkingBoy.fetchCar(ticket);
+
+        //then
+        assertEquals(8 , superSmartParkingBoy.getParkCarPlaces().get(0).getEmptyPlace());
+    }
 }
 

@@ -29,6 +29,8 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         for(Ticket ticket1 : tickets){
             if(ticket1.getTicketId().equals(ticket.getTicketId())){
                 ticket.setOutDate(true);
+                int emptyPlace  = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
+                this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
                 return new Car(ticket.getTicketId());
             }
         }

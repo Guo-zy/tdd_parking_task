@@ -189,5 +189,26 @@ class SmartParkingBoyTest {
         assertEquals(1 , selectParkCarPlaceNum);
     }
 
+    /*
+     * given parkBoy , car , parkCarPlace0Has7Place
+     * when fecthCar
+     * then return 8
+     * */
+
+    @Test
+    void should_return_6_when_fetchCar_given_parCarPlace0Has7Place_and_car() {
+        //given
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy();
+        Car car = new Car("666666");
+        Ticket ticket = smartParkingBoy.goParking(car);
+        smartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(7);
+
+        //when
+        smartParkingBoy.fetchCar(ticket);
+
+        //then
+        assertEquals(8 , smartParkingBoy.getParkCarPlaces().get(0).getEmptyPlace());
+    }
+
 
 }
