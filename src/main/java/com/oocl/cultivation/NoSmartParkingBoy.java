@@ -18,12 +18,19 @@ public class NoSmartParkingBoy extends ParkingBoy{
         if((this.parkCarPlaces.get(currentParkCarPlace).getEmptyPlace() >= 0)){
             currentParkCarPlace ++;
         }
-        Ticket ticket = new Ticket(car.getCarLicense());
-        tickets.add(ticket);
-        int emptyPlace =   this.parkCarPlaces.get(currentParkCarPlace).getEmptyPlace() - 1;
-        this.parkCarPlaces.get(currentParkCarPlace).setEmptyPlace(emptyPlace);
+        Ticket ticket = parKing(car);
         return ticket;
     }
+
+    //停车并给票
+    private Ticket parKing(Car car) {
+        Ticket ticket = new Ticket(car.getCarLicense());
+        this.tickets.add(ticket);
+        int emptyPlace = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
+        getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
+        return ticket;
+    }
+
 
     @Override
     public Car fetchCar(Ticket ticket) {

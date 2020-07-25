@@ -12,10 +12,19 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         if(isNotEnoughPostition()){
             return null;
         }
-        Ticket ticket = new Ticket(car.getCarLicense());
-        this.tickets.add(ticket);
+       Ticket ticket = parKing(car);
         return ticket;
     }
+
+    //停车并给票
+    private Ticket parKing(Car car) {
+        Ticket ticket = new Ticket(car.getCarLicense());
+        this.tickets.add(ticket);
+        int emptyPlace = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
+        getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
+        return ticket;
+    }
+
 
     //计算是否有足够的停车位置
     private boolean isNotEnoughPostition() {

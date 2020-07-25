@@ -19,10 +19,16 @@ public class SmartParkingBoy extends ParkingBoy {
         if (this.getParkCarPlaces().get(0).getEmptyPlace() <= 0 ) {
             this.currentParkCarPlace++;
         }
+        Ticket ticket = parKing(car);
+        return ticket;
+    }
+
+    //停车并给票
+    private Ticket parKing(Car car) {
         Ticket ticket = new Ticket(car.getCarLicense());
         this.tickets.add(ticket);
-        int emptyPlace = this.getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
-        this.getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
+        int emptyPlace = getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() - 1;
+        getParkCarPlaces().get(currentParkCarPlace).setEmptyPlace(emptyPlace);
         return ticket;
     }
 
