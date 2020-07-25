@@ -55,16 +55,24 @@ public class SuperSmartParkingBoy extends ParkingBoy {
             return null;
         }
         if (ticket.isOutDate()) return null;
-        for (Ticket ticket1 : tickets) {
-            if (ticket1.getTicketId().equals(ticket.getTicketId())) {
+        if(ticketIsWrong(ticket)){
+            return null;
+        }
+        return new Car(ticket.getTicketId());
+    }
+
+    //判断票是否错误
+    private boolean ticketIsWrong(Ticket ticket) {
+        for (Ticket ticket_used : tickets ){
+            if (ticket.getTicketId() == ticket_used.getTicketId()) {
                 ticket.setOutDate(true);
                 int emptyPlace = this.getParkCarPlaces().get(this.currentParkCarPlace).getEmptyPlace() + 1;
                 this.getParkCarPlaces().get(this.currentParkCarPlace).setEmptyPlace(emptyPlace);
-                return new Car(ticket.getTicketId());
+                return false;
             }
         }
         setWrongMes("Unrecognized parking ticket");
-        return null;
+        return true;
     }
 
     //判断票为空
