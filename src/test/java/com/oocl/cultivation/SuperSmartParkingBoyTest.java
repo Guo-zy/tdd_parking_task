@@ -75,7 +75,7 @@ class SuperSmartParkingBoyTest {
         car = superSmartParkingBoy.fetchCar(ticket);
 
         //then
-        assertEquals(null , car);
+        assertEquals(null, car);
     }
 
     //test AC1_5
@@ -92,7 +92,7 @@ class SuperSmartParkingBoyTest {
         Ticket ticket = superSmartParkingBoy.goParking(car);
 
         //then
-        assertEquals(null , ticket);
+        assertEquals(null, ticket);
 
     }
 
@@ -101,7 +101,7 @@ class SuperSmartParkingBoyTest {
     void should_return_unrecognized_parking_ticket_when_fetchCar_and_queryMes_given_wrong_ticket() {
         //given
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
-        Car car =  new Car("666666");
+        Car car = new Car("666666");
         Ticket ticket = superSmartParkingBoy.goParking(car);
 
         //when
@@ -109,7 +109,7 @@ class SuperSmartParkingBoyTest {
         String mes = superSmartParkingBoy.getWrongMes();
 
         //then
-        assertEquals("Unrecognized parking ticket" , mes);
+        assertEquals("Unrecognized parking ticket", mes);
     }
 
     //test AC2_2
@@ -124,7 +124,7 @@ class SuperSmartParkingBoyTest {
         String mes = superSmartParkingBoy.getWrongMes();
 
         //then
-        assertEquals("Please provide your parking ticket" , mes);
+        assertEquals("Please provide your parking ticket", mes);
     }
 
     //test AC2_3
@@ -142,19 +142,19 @@ class SuperSmartParkingBoyTest {
         String mes = superSmartParkingBoy.getWrongMes();
 
         //then
-        assertEquals("Not enough position" , mes);
+        assertEquals("Not enough position", mes);
     }
 
     // test AC5_1
     /*  Story 5
-    *   given : parkBoy , parkCarPlace0Has7Place , parkCarPlace1Has3Place;
-    *   when : goParking
-    *   then : return 0;
-    *
-    *   given : parkBoy , parkCarPlace0Has3Place , parkCarPlace1Has7Place;
-    *   when : goParking
-    *   then : return 1;
-    * */
+     *   given : parkBoy , parkCarPlace0Has7Place , parkCarPlace1Has3Place;
+     *   when : goParking
+     *   then : return 0;
+     *
+     *   given : parkBoy , parkCarPlace0Has3Place , parkCarPlace1Has7Place;
+     *   when : goParking
+     *   then : return 1;
+     * */
 
     @Test
     void should_return_0_when_goParking_given_parkCarPlace0Has7Palce_and_parkCarPlace1Has3Place() {
@@ -169,7 +169,24 @@ class SuperSmartParkingBoyTest {
         int selectPlace = superSmartParkingBoy.getCurrentParkCarPlace();
 
         //then
-        assertEquals(0 , selectPlace);
+        assertEquals(0, selectPlace);
     }
+
+    @Test
+    void should_return_1_when_goParking_given_parkCarPlace0Has3Palce_and_parkCarPlace1Has7Place() {
+        //give
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("666666");
+        superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(3);
+        superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(7);
+
+        //when
+        superSmartParkingBoy.goParking(car);
+        int selectPlace = superSmartParkingBoy.getCurrentParkCarPlace();
+
+        //then
+        assertEquals(1, selectPlace);
+    }
+
 }
 

@@ -4,8 +4,8 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public Ticket goParking(Car car) {
-        double position0Rate = this.getParkCarPlaces().get(0).getEmptyPlace() / this.getParkCarPlaces().get(0).ALLPALCE;
-        double position1Rate = this.getParkCarPlaces().get(1).getEmptyPlace() / this.getParkCarPlaces().get(1).ALLPALCE;
+        double position0Rate = this.getParkCarPlaces().get(0).getEmptyPlace() / (double)this.getParkCarPlaces().get(0).ALLPALCE;
+        double position1Rate = this.getParkCarPlaces().get(1).getEmptyPlace() / (double)this.getParkCarPlaces().get(1).ALLPALCE;
         if(position0Rate != position1Rate){
             this.currentParkCarPlace = position0Rate > position1Rate ? 0 : 1;
         }
