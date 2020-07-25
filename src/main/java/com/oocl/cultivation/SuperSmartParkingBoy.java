@@ -23,6 +23,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
                 return new Car(ticket.getTicketId());
             }
         }
+        setWrongMes("Unrecognized parking ticket");
         return null;
     }
 }
