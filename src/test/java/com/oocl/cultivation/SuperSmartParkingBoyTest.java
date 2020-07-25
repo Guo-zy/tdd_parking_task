@@ -156,6 +156,20 @@ class SuperSmartParkingBoyTest {
     *   then : return 1;
     * */
 
+    @Test
+    void should_return_0_when_goParking_given_parkCarPlace0Has7Palce_and_parkCarPlace1Has3Place() {
+        //give
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy();
+        Car car = new Car("666666");
+        superSmartParkingBoy.getParkCarPlaces().get(0).setEmptyPlace(7);
+        superSmartParkingBoy.getParkCarPlaces().get(1).setEmptyPlace(3);
 
+        //when
+        superSmartParkingBoy.goParking(car);
+        int selectPlace = superSmartParkingBoy.getCurrentParkCarPlace();
+
+        //then
+        assertEquals(0 , selectPlace);
+    }
 }
 
