@@ -20,6 +20,19 @@ public class NoSmartParkingBoy extends ParkingBoy{
         return parKing(car);
     }
 
+    @Override
+    public Car fetchCar(Ticket ticket) {
+        if(ticketIsNull(ticket)){
+            return null;
+        }
+        if(ticket.isOutDate()) return null;
+        if(ticketIsWrong(ticket)){
+            return null;
+        }
+        return fetch(ticket);
+
+    }
+
     //选择下一个停车场
     private void selectNextParkCarPlace() {
         setCurrentParkCarPlace(getCurrentParkCarPlace() + 1);
@@ -50,19 +63,6 @@ public class NoSmartParkingBoy extends ParkingBoy{
         return ticket;
     }
 
-
-    @Override
-    public Car fetchCar(Ticket ticket) {
-        if(ticketIsNull(ticket)){
-            return null;
-        }
-        if(ticket.isOutDate()) return null;
-        if(ticketIsWrong(ticket)){
-            return null;
-        }
-            return fetch(ticket);
-
-    }
 
     //根据票给客户取车
     private Car fetch(Ticket ticket) {

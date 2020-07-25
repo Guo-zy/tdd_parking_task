@@ -15,6 +15,18 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         return parKing(car);
     }
 
+    @Override
+    public Car fetchCar(Ticket ticket) {
+        if (ticketIsNull(ticket)) {
+            return null;
+        }
+        if (ticket.isOutDate()) return null;
+        if(ticketIsWrong(ticket)){
+            return null;
+        }
+        return fetch(ticket);
+    }
+
     //停车并给票
     private Ticket parKing(Car car) {
         Ticket ticket = new Ticket(car.getCarLicense());
@@ -49,17 +61,6 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         currentParkCarPlace = maxPositionRateNum;
     }
 
-    @Override
-    public Car fetchCar(Ticket ticket) {
-        if (ticketIsNull(ticket)) {
-            return null;
-        }
-        if (ticket.isOutDate()) return null;
-        if(ticketIsWrong(ticket)){
-            return null;
-        }
-        return fetch(ticket);
-    }
 
     //根据票给客户取车
     private Car fetch(Ticket ticket) {

@@ -15,6 +15,19 @@ public class SmartParkingBoy extends ParkingBoy {
         return parKing(car);
     }
 
+    @Override
+    public Car fetchCar(Ticket ticket) {
+        if (ticketIsNull(ticket)) {
+            return null;
+        }
+        if (ticket.isOutDate()) return null;
+        if(ticketIsWrong(ticket)){
+            return null;
+        }
+        return fetch(ticket);
+    }
+
+
     //计算当前停车场是否为满
     private  boolean isCurrentParkCarPlaceFull(){
         return this.getParkCarPlaces().get(currentParkCarPlace).getEmptyPlace() <= 0;
@@ -50,18 +63,6 @@ public class SmartParkingBoy extends ParkingBoy {
         }
         setWrongMes("Not enough position");
         return true;
-    }
-
-    @Override
-    public Car fetchCar(Ticket ticket) {
-        if (ticketIsNull(ticket)) {
-            return null;
-        }
-        if (ticket.isOutDate()) return null;
-        if(ticketIsWrong(ticket)){
-            return null;
-        }
-        return fetch(ticket);
     }
 
     //根据票给客户取车
