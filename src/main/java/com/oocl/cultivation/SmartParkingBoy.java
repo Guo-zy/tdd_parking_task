@@ -28,11 +28,6 @@ public class SmartParkingBoy extends ParkingBoy {
     }
 
 
-    //计算当前停车场是否为满
-    private  boolean isCurrentParkCarPlaceFull(){
-        return this.getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() <= 0;
-    }
-
     //计算哪个停车场最优
     private void selectMaxEmptyPlaceNum() {
         int currentEmptyPlaceNum = getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace();
