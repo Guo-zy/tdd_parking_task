@@ -21,8 +21,53 @@ public abstract  class ParkingBoy {
 
     public abstract  Ticket goParking(Car car);
 
-
     public abstract Car fetchCar(Ticket ticket) ;
+
+    //停车并给票
+    protected Ticket parKing(Car car) {
+        Ticket ticket = new Ticket(car.getCarLicense());
+        getTickets().add(ticket);
+        int emptyPlace = getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() - 1;
+        getParkCarPlaces().get(getCurrentParkCarPlace()).setEmptyPlace(emptyPlace);
+        return ticket;
+    }
+
+    //根据票给客户取车
+    protected Car fetch(Ticket ticket) {
+        ticket.setOutDate(true);
+        int emptyPlace = this.getParkCarPlaces().get(getCurrentParkCarPlace()).getEmptyPlace() + 1;
+        this.getParkCarPlaces().get(getCurrentParkCarPlace()).setEmptyPlace(emptyPlace);
+        return  new Car(ticket.getTicketId());
+    }
+
+    //判断票是否错误
+    protected boolean ticketIsWrong(Ticket ticket) {
+        for (Ticket ticket_used : getTickets() ){
+            if (ticket.getTicketId() == ticket_used.getTicketId()) {
+                return false;
+            }
+        }
+        setWrongMes("Unrecognized parking ticket");
+        return true;
+    }
+
+    //判断票为空
+    protected boolean ticketIsNull(Ticket ticket) {
+        if(ticket == null) {
+            setWrongMes("Please provide your parking ticket");
+            return true;
+        }
+        return false;
+    }
+
+    //计算是否有足够的停车位置
+    protected boolean isNotEnoughPostition() {
+        for (int i = 0; i < getParkCarPlaces().size(); i++) {
+            if (getParkCarPlaces().get(i).getEmptyPlace() != 0) return false;
+        }
+        setWrongMes("Not enough position");
+        return true;
+    }
 
 
     public void setWrongMes(String wrongMes) {
